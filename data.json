@@ -1,0 +1,70 @@
+{
+  "pricingTypes": [
+    { "id": "basic", "label": "Basic Mow", "base": 45 },
+    { "id": "full", "label": "Full Service", "base": 95 },
+    { "id": "lights", "label": "Holiday Lights", "base": 150 },
+    { "id": "cleanup", "label": "Seasonal Cleanup", "base": 120 }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "customer": "Martinez Residence",
+      "address": "1204 Shoreline Blvd",
+      "date": "2025-07-05",
+      "pricingType": "full",
+      "status": "scheduled",
+      "paid": false,
+      "notes": "Gate code is 4821"
+    },
+    {
+      "id": 2,
+      "customer": "Callaway Property",
+      "address": "308 Ocean Drive",
+      "date": "2025-07-06",
+      "pricingType": "basic",
+      "status": "completed",
+      "paid": true,
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "customer": "Reyna Family",
+      "address": "517 Padre Island Hwy",
+      "date": "2025-07-08",
+      "pricingType": "lights",
+      "status": "scheduled",
+      "paid": false,
+      "notes": "Install front yard only"
+    },
+    {
+      "id": 4,
+      "customer": "Garza Business Park",
+      "address": "900 S Staples St",
+      "date": "2025-07-10",
+      "pricingType": "cleanup",
+      "status": "scheduled",
+      "paid": false,
+      "notes": "Three lots total"
+    },
+    {
+      "id": 5,
+      "customer": "Hernandez Home",
+      "address": "2211 Gollihar Rd",
+      "date": "2025-07-03",
+      "pricingType": "basic",
+      "status": "completed",
+      "paid": false,
+      "notes": "Invoice sent, awaiting payment"
+    },
+    {
+      "id": 6,
+      "customer": "Flores Estate",
+      "address": "78 Whitecap Blvd",
+      "date": "2025-07-12",
+      "pricingType": "full",
+      "status": "scheduled",
+      "paid": false,
+      "notes": ""
+    }
+  ]
+}

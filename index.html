@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawnCarePros Scheduler</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="header-brand">
+      <span class="logo" aria-hidden="true">🌿</span>
+      <div>
+        <h1>LawnCarePros</h1>
+        <p>Job Scheduler &amp; Billing</p>
+      </div>
+    </div>
+    <div class="header-stats" role="region" aria-label="Job overview">
+      <div class="stat-pill">
+        <span class="val" id="stat-total">0</span>
+        <span class="lbl">Total Jobs</span>
+      </div>
+      <div class="stat-pill">
+        <span class="val" id="stat-scheduled">0</span>
+        <span class="lbl">Scheduled</span>
+      </div>
+      <div class="stat-pill">
+        <span class="val" id="stat-completed">0</span>
+        <span class="lbl">Completed</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== Controls ===== -->
+    <section class="controls" aria-label="Filter and search jobs">
+      <div class="control-group">
+        <label for="search-input">Search</label>
+        <input type="text" id="search-input" placeholder="Customer or address..." aria-label="Search by customer or address" />
+      </div>
+      <div class="control-group">
+        <label for="filter-status">Status</label>
+        <select id="filter-status" aria-label="Filter by status">
+          <option value="all">All Statuses</option>
+          <option value="scheduled">Scheduled</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="filter-type">Service Type</label>
+        <select id="filter-type" aria-label="Filter by service type">
+          <option value="all">All Types</option>
+        </select>
+      </div>
+      <button class="btn-add" id="btn-add-new" aria-label="Add new job">+ Add Job</button>
+    </section>
+
+    <!-- ===== Summary Bar ===== -->
+    <section class="summary-bar" role="region" aria-label="Filtered summary">
+      <div class="sum-item">
+        <span class="sum-val" id="sum-jobs">0</span>
+        <span class="sum-lbl">Jobs Shown</span>
+      </div>
+      <div class="sum-divider" aria-hidden="true"></div>
+      <div class="sum-item">
+        <span class="sum-val" id="sum-revenue">$0</span>
+        <span class="sum-lbl">Total Value</span>
+      </div>
+      <div class="sum-divider" aria-hidden="true"></div>
+      <div class="sum-item">
+        <span class="sum-val" id="sum-unpaid">$0</span>
+        <span class="sum-lbl">Outstanding</span>
+      </div>
+      <div class="sum-divider" aria-hidden="true"></div>
+      <div class="sum-item">
+        <span class="sum-val" id="sum-pending">0</span>
+        <span class="sum-lbl">Pending Jobs</span>
+      </div>
+    </section>
+
+    <!-- ===== Jobs Table ===== -->
+    <section class="table-wrapper" aria-label="Job list">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Customer</th>
+            <th scope="col">Address</th>
+            <th scope="col">Date</th>
+            <th scope="col">Service</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+            <th scope="col">Payment</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="jobs-tbody">
+          <tr><td colspan="8" class="empty-state">Loading jobs...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- ===== Modal ===== -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <h2 id="modal-title">Add New Job</h2>
+      <form id="job-form" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group full">
+            <label for="f-customer">Customer Name</label>
+            <input type="text" id="f-customer" placeholder="e.g. Martinez Residence" required />
+          </div>
+
+          <div class="form-group full">
+            <label for="f-address">Address</label>
+            <input type="text" id="f-address" placeholder="e.g. 1204 Shoreline Blvd" required />
+          </div>
+
+          <div class="form-group">
+            <label for="f-date">Date</label>
+            <input type="date" id="f-date" required />
+          </div>
+
+          <div class="form-group">
+            <label for="f-type">Service Type</label>
+            <select id="f-type" required></select>
+          </div>
+
+          <div class="form-group">
+            <label for="f-status">Status</label>
+            <select id="f-status">
+              <option value="scheduled">Scheduled</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="f-paid">Payment</label>
+            <select id="f-paid">
+              <option value="no">Unpaid</option>
+              <option value="yes">Paid</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <div class="pricing-display" id="pricing-display" aria-live="polite">
+              Select a service type to see pricing.
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label for="f-notes">Notes</label>
+            <textarea id="f-notes" placeholder="Gate code, special instructions, etc."></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" id="btn-cancel">Cancel</button>
+          <button type="submit" class="btn-save">Save Job</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>LawnCarePros Scheduler &mdash; TAMUCC COSC Individual Project 1 &mdash; Data loaded from local JSON</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
