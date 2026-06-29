@@ -33,3 +33,4 @@ All job and pricing data is loaded asynchronously from `data.json`, a local JSON
 ## AI Assistance Disclosure
 
 I used Claude (Anthropic) to help build this project. Specifically, Claude helped me structure the async fetch function that loads data.json on page load, the filter and search logic that chains multiple conditions to narrow down the jobs array, and the modal form's open/close/populate pattern for both adding and editing jobs. I reviewed and understand all of the code, including how the DOM is updated after each state change and how the pricing display updates dynamically when the service type selector changes.
+ 
