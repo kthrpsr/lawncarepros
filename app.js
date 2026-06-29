@@ -231,3 +231,4 @@ document.addEventListener('keydown', e => {
 
 // ===== Init =====
 loadData();
+// async fetch complete
